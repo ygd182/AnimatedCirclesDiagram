@@ -11,7 +11,14 @@
             position: absolute;
             top: -14px;
             left: 221px;
-            transition: opacity 0.3s;
+          }
+
+          .circle-inactive {
+            z-index: 0;
+          }
+
+          .circle-active {
+            z-index: 1;
           }
 
           .circle-content {
@@ -35,11 +42,15 @@
             left: 274px;
           }
 
-          .circle-inactive {
+          .circle-img {
+            transition: opacity 0.3s;
+          }
+
+          .circle-img-inactive {
             opacity: 0.5;
           }
 
-          .circle-active {
+          .circle-img-active {
             opacity: 1;
             z-index: 1;
           }
@@ -52,6 +63,19 @@
             height: 80px;
             z-index: 2;
             cursor: pointer;
+            transition: opacity 0.3s;
+          }
+
+          .circle-icon-active {
+            opacity: 1;
+          }
+
+          .circle-icon-inactive {
+            opacity: 0.5;
+          }
+
+          .circle-icon:hover {
+            opacity: 1;
           }
 
           .circles-wrapper {
@@ -60,7 +84,11 @@
           }
 
           .circles-background {
+            transition: opacity 0.3s;
+          }
 
+          .circles-background-inactive {
+            opacity: 0.5;
           }
 
         </style>
@@ -75,7 +103,9 @@
                 <div class="circle-icon">
                   <img src="images/Diagram Analytics icon.png">
                 </div>
-                <img src="images/Diagram Analytics Circul wo lines.png">
+                <div class="circle-img">
+                  <img src="images/Diagram Analytics Circul wo lines.png">
+                </div>
               </div>
             </div>
             <div class="circle circle-cloud">
@@ -83,7 +113,9 @@
                 <div class="circle-icon">
                   <img src="images/Diagram Cloud Icon.png">
                 </div>
-                <img src="images/Diagram Cloud Circle.png">
+                <div class="circle-img">
+                  <img src="images/Diagram Cloud Circle.png">
+                </div>
               </div>
             </div>
             <div class="circle circle-data">
@@ -91,7 +123,9 @@
                 <div class="circle-icon">
                   <img src="images/Diagram Data Icon.png">
                 </div>
-                <img src="images/Diagram Data Circle.png">
+                <div class="circle-img">
+                  <img src="images/Diagram Data Circle.png">
+                </div>
               </div>
             </div>
         </div>
@@ -100,12 +134,36 @@
     <script>
     $(document).ready(function() {
       $('.circle-icon').on('click', ($event) => {
-        console.log('click', $($event.target.closest('.circle')));
+        console.log('click', $($event.target.closest('.circle')).find('.circle-img'));
+        const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
+        $('.circle-img').removeClass('circle-img-active');
+        $('.circle-img').addClass('circle-img-inactive');
+        $('.circles-background').addClass('circles-background-inactive');
+        circleImg.removeClass('circle-img-inactive');
+        circleImg.addClass('circle-img-active');
+
         const circleParent =  $($event.target.closest('.circle'));
         $('.circle').removeClass('circle-active');
         $('.circle').addClass('circle-inactive');
-        circleParent.removeClass('circle-inactive');
         circleParent.addClass('circle-active');
+
+        $('.circle-icon').removeClass('circle-icon-active');
+        $('.circle-icon').addClass('circle-icon-inactive');
+        const icon = $($event.target.closest('.circle-icon'));
+        icon.removeClass('circle-icon-inactive');
+        icon.addClass('circle-icon-active');
+
+        $event.stopPropagation();
+      });
+
+      $('body').on('click', ($event) => {
+        $('.circle-img').removeClass('circle-img-active');
+        $('.circle-img').removeClass('circle-img-inactive');
+        $('.circle').removeClass('circle-active');
+        $('.circle').removeClass('circle-inactive');
+        $('.circle-icon').removeClass('circle-icon-active');
+        $('.circle-icon').removeClass('circle-icon-inactive');
+        $('.circles-background').removeClass('circles-background-inactive');
       });
     });
     </script>
