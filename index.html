@@ -125,6 +125,20 @@
             padding: 10px;
             font-size: 18px;
             line-height: 1.6;
+            position: relative;
+          }
+
+          .box-body-content {
+            z-index: 1;
+          }
+
+          .box-body-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
           }
 
           .box-data {
@@ -135,8 +149,9 @@
             background: transparent linear-gradient(90deg, #C02EEF 0%, #020759 100%) 0% 0% no-repeat padding-box;
           }
 
-          .box-data .box-body {
+          .box-data .box-body-background {
             background: transparent linear-gradient(316deg, #4934EDCC 0%, #ED30D0 100%) 0% 0% no-repeat padding-box;
+            opacity: 0.7;
           }
 
           .box-analytics {
@@ -147,8 +162,9 @@
             background: transparent linear-gradient(90deg, #4934ED 0%, #2BCDD9 100%) 0% 0% no-repeat padding-box;
           }
 
-          .box-analytics .box-body {
+          .box-analytics .box-body-background {
             background: transparent linear-gradient(312deg, #56A4BD 0%, #020759 100%) 0% 0% no-repeat padding-box;
+            opacity: 0.85;
           }
 
           .box-cloud {
@@ -159,8 +175,9 @@
             background: transparent linear-gradient(90deg, #ED30D0 0%, #EE576E 100%, #2BCDD9 100%) 0% 0% no-repeat padding-box;
           }
 
-          .box-cloud .box-body {
+          .box-cloud .box-body-background {
             background: transparent linear-gradient(312deg, #EE576E 0%, #020759 100%) 0% 0% no-repeat padding-box;
+            opacity: 0.85;
           }
 
         </style>
@@ -205,7 +222,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-data box-left">
@@ -213,7 +233,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-data box-bottom">
@@ -221,7 +244,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
 
@@ -230,7 +256,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-cloud box-left">
@@ -238,7 +267,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-cloud box-bottom">
@@ -246,7 +278,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
 
@@ -255,7 +290,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-analytics box-left">
@@ -263,7 +301,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
             <div class="box box-analytics box-bottom">
@@ -271,7 +312,10 @@
                 Pan Point C
               </div>
               <div class="box-body">
-                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                <div class="box-body-background"></div>
+                <div class="box-body-content">
+                  Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                </div>
               </div>
             </div>
         </div>
