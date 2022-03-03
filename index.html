@@ -92,6 +92,77 @@
             opacity: 0.5;
           }
 
+          .box {
+            position: absolute;
+            width: 365px;
+            color: #FFFFFF;
+            z-index: 3;
+            transition: all 0.3s;
+          }
+
+          .box-top {
+            top: 3%;
+            left: 40%;
+          }
+
+          .box-left {
+            top: 40%;
+            left: 10%;
+          }
+
+          .box-bottom {   
+            top: 67%;
+            right: 28%;
+          }
+
+          .box-header {
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .box-body {
+            padding: 10px;
+            font-size: 18px;
+            line-height: 1.6;
+          }
+
+          .box-data {
+            display: none;
+          }
+
+          .box-data .box-header {
+            background: transparent linear-gradient(90deg, #C02EEF 0%, #020759 100%) 0% 0% no-repeat padding-box;
+          }
+
+          .box-data .box-body {
+            background: transparent linear-gradient(316deg, #4934EDCC 0%, #ED30D0 100%) 0% 0% no-repeat padding-box;
+          }
+
+          .box-analytics {
+            display: none;
+          }
+
+          .box-analytics .box-header {
+            background: transparent linear-gradient(90deg, #4934ED 0%, #2BCDD9 100%) 0% 0% no-repeat padding-box;
+          }
+
+          .box-analytics .box-body {
+            background: transparent linear-gradient(312deg, #56A4BD 0%, #020759 100%) 0% 0% no-repeat padding-box;
+          }
+
+          .box-cloud {
+            display: none;
+          }
+
+          .box-cloud .box-header {
+            background: transparent linear-gradient(90deg, #ED30D0 0%, #EE576E 100%, #2BCDD9 100%) 0% 0% no-repeat padding-box;
+          }
+
+          .box-cloud .box-body {
+            background: transparent linear-gradient(312deg, #EE576E 0%, #020759 100%) 0% 0% no-repeat padding-box;
+          }
+
         </style>
     </head>
     <body>
@@ -99,7 +170,7 @@
             <div class="circles-background">
               <img src="images/Diagram bg.png">
             </div>
-            <div class="circle circle-data">
+            <div class="circle circle-data" data-id="data">
               <div class="circle-content">
                 <div class="circle-icon">
                   <img src="images/Diagram Data Icon.png">
@@ -109,7 +180,7 @@
                 </div>
               </div>
             </div>
-            <div class="circle circle-cloud">
+            <div class="circle circle-cloud" data-id="cloud">
               <div class="circle-content">
                 <div class="circle-icon">
                   <img src="images/Diagram Cloud Icon.png">
@@ -119,7 +190,7 @@
                 </div>
               </div>
             </div>
-            <div class="circle circle-analytics">
+            <div class="circle circle-analytics" data-id="analytics">
               <div class="circle-content">
                 <div class="circle-icon">
                   <img src="images/Diagram Analytics icon.png">
@@ -127,6 +198,80 @@
                 <div class="circle-img">
                   <img src="images/Diagram Analytics Circul wo lines.png">
                 </div>
+              </div>
+            </div>
+            <div class="box box-data box-top">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-data box-left">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-data box-bottom">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+
+            <div class="box box-cloud box-top">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-cloud box-left">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-cloud box-bottom">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+
+            <div class="box box-analytics box-top">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-analytics box-left">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+              </div>
+            </div>
+            <div class="box box-analytics box-bottom">
+              <div class="box-header">
+                Pan Point C
+              </div>
+              <div class="box-body">
+                Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
               </div>
             </div>
         </div>
@@ -154,6 +299,11 @@
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
 
+        console.log(circleParent ,circleParent.data('id'));
+        const dataId = circleParent.data('id');
+        $('.box').hide();
+        $('.box-' + dataId ).show();
+
         $event.stopPropagation();
       });
 
@@ -165,6 +315,8 @@
         $('.circle-icon').removeClass('circle-icon-active');
         $('.circle-icon').removeClass('circle-icon-inactive');
         $('.circles-background').removeClass('circles-background-inactive');
+
+        $('.box').hide();
       });
     });
     </script>
