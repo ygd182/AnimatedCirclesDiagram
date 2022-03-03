@@ -302,7 +302,10 @@
         console.log(circleParent ,circleParent.data('id'));
         const dataId = circleParent.data('id');
         $('.box').hide();
-        $('.box-' + dataId ).show();
+        setTimeout(() => {
+          $('.box-' + dataId ).show();
+        }, 100);
+        
 
         $event.stopPropagation();
       });
