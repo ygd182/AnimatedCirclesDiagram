@@ -9,6 +9,10 @@
           body {
             background-color: #080E57;
           }
+
+          .content {
+            display: flex;
+          }
           
           .circle {
             width: 470px;
@@ -186,9 +190,90 @@
             opacity: 0.85;
           }
 
+          .header-title {
+            font-size: 72px;
+            font-weight: bold;
+            line-height: 1.3;
+            color: #FFFFFF;
+            padding: 30px 100px;
+            
+          }
+
+          .text-cloud {
+            color: #EE576E;
+          }
+
+          .text-analytics {
+            color: #2BCDD9;
+          }
+
+          .text-data {
+            color: #ED30D0;
+          }
+          
+          .text-gradient {
+            background: -webkit-linear-gradient(#F020D3, #F18412);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          } 
+
+          .description-side {
+            flex: 1;
+            margin: 0 50px;
+          }
+
+          .description-box {
+            width: 100%;
+            position: relative;
+            color: #FFF;
+          }
+
+          .description-box-background {
+            background: transparent linear-gradient(352deg, #FFFFFF00 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+            opacity: 0.25;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: -1;
+          }
+
+          .description-box-header {
+            font-weight: bold;
+            font-size: 44px;
+            line-height: 2.1;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+          }
+
+          .description-box-img {
+            height: 44px;
+            margin-right: 15px;
+          }
+
+          .description-box-data .description-box-img {
+            height: 66px;
+          }
+
+          .description-box.description-box-active .description-box-header span {
+            color: #FFF;
+          }
+
+          .description-box-body {
+            font-size: 18px;
+            line-height: 1.2;
+            padding: 10px 20px 90px 20px;
+          }
+
         </style>
     </head>
     <body>
+      <h1 class="header-title">
+        Change is only as transformative as <span class="text-data">Data</span>, <span class="text-analytics">Analytics</span> and <span class="text-cloud">Cloud</span> are <span class="text-gradient">interconnected</span> and leveraged
+      </h1>
+      <div class="content">
         <div class="circles-wrapper">
             <div class="circles-background">
               <img src="images/Diagram bg.png">
@@ -325,6 +410,40 @@
               </div>
             </div>
         </div>
+        <div class="description-side">
+          <div class="description-box description-box-analytics">
+            <div class="description-box-background"></div>
+            <div class="description-box-header">
+              <img class="description-box-img" src="images/analytics-color.svg">
+              <img class="description-box-img" src="images/analytics-color.svg">
+              <span class="text-analytics">Analytics</span>
+            </div>
+            <div class="description-box-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </div>
+          <div class="description-box description-box-cloud">
+            <div class="description-box-background"></div>
+            <div class="description-box-header">
+              <img class="description-box-img" src="images/cloud-color.svg">
+              <span class="text-cloud">Cloud</span>
+            </div>
+            <div class="description-box-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </div>
+          <div class="description-box description-box-data">
+            <div class="description-box-background"></div>
+            <div class="description-box-header">
+              <img class="description-box-img" src="images/data-color.svg">
+              <span class="text-data">Data</span>
+            </div>
+            <div class="description-box-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 
     <script>
@@ -355,8 +474,9 @@
         setTimeout(() => {
           $('.box-' + dataId ).show();
         }, 100);
-        
 
+        $('.description-box').removeClass('description-box-active');
+        $('.description-box-'+ dataId).addClass('description-box-active');
         $event.stopPropagation();
       });
 
@@ -368,7 +488,7 @@
         $('.circle-icon').removeClass('circle-icon-active');
         $('.circle-icon').removeClass('circle-icon-inactive');
         $('.circles-background').removeClass('circles-background-inactive');
-
+        $('.description-box').removeClass('description-box-active');
         $('.box').hide();
       });
     });
