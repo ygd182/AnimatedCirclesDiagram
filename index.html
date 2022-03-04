@@ -226,6 +226,7 @@
             width: 100%;
             position: relative;
             color: #FFF;
+            padding: 20px;
           }
 
           .description-box-background {
@@ -253,12 +254,45 @@
             margin-right: 15px;
           }
 
+          .description-box-img-white {
+            display: none;
+          }
+
           .description-box-data .description-box-img {
             height: 66px;
           }
 
           .description-box.description-box-active .description-box-header span {
             color: #FFF;
+          }
+
+          .description-box.description-box-active  .description-box-img {
+            display: none;
+          }
+
+          .description-box.description-box-active  .description-box-img-white {
+            display: block;
+          }
+
+          .description-box.description-box-analytics.description-box.description-box-active .description-box-background {
+            opacity: 1;
+            background: url(images/analytics-box.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          .description-box.description-box-cloud.description-box.description-box-active .description-box-background {
+            opacity: 1;
+            background: url(images/cloud-box.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+
+          .description-box.description-box-data.description-box.description-box-active .description-box-background {
+            opacity: 1;
+            background: url(images/data-box.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
           }
 
           .description-box-body {
@@ -412,10 +446,11 @@
         </div>
         <div class="description-side">
           <div class="description-box description-box-analytics">
-            <div class="description-box-background"></div>
+            <div class="description-box-background">
+            </div>
             <div class="description-box-header">
               <img class="description-box-img" src="images/analytics-color.svg">
-              <img class="description-box-img" src="images/analytics-color.svg">
+              <img class="description-box-img description-box-img-white" src="images/analytics-white.svg">
               <span class="text-analytics">Analytics</span>
             </div>
             <div class="description-box-body">
@@ -423,9 +458,11 @@
             </div>
           </div>
           <div class="description-box description-box-cloud">
-            <div class="description-box-background"></div>
+            <div class="description-box-background">
+            </div>
             <div class="description-box-header">
               <img class="description-box-img" src="images/cloud-color.svg">
+              <img class="description-box-img description-box-img-white" src="images/cloud-white.svg">
               <span class="text-cloud">Cloud</span>
             </div>
             <div class="description-box-body">
@@ -433,9 +470,11 @@
             </div>
           </div>
           <div class="description-box description-box-data">
-            <div class="description-box-background"></div>
+            <div class="description-box-background">
+            </div>
             <div class="description-box-header">
               <img class="description-box-img" src="images/data-color.svg">
+              <img class="description-box-img description-box-img-white" src="images/data-white.svg">
               <span class="text-data">Data</span>
             </div>
             <div class="description-box-body">
