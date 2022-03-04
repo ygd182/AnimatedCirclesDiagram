@@ -129,6 +129,15 @@
             padding: 10px;
             font-size: 18px;
             font-weight: bold;
+            position: relative;
+          }
+
+          .box-header-img {
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            right: -15px;
+            bottom: -15px;
           }
 
           .box-body {
@@ -228,6 +237,7 @@
             color: #FFF;
             padding: 20px;
             margin-bottom: 10px;
+            cursor: pointer;
           }
 
           .description-box-background {
@@ -346,6 +356,7 @@
             <div class="box box-data box-top">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -357,6 +368,7 @@
             <div class="box box-data box-left">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -368,6 +380,7 @@
             <div class="box box-data box-bottom">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -380,6 +393,7 @@
             <div class="box box-cloud box-top">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -391,6 +405,7 @@
             <div class="box box-cloud box-left">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -402,6 +417,7 @@
             <div class="box box-cloud box-bottom">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -414,6 +430,7 @@
             <div class="box box-analytics box-top">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -425,6 +442,7 @@
             <div class="box box-analytics box-left">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -436,6 +454,7 @@
             <div class="box box-analytics box-bottom">
               <div class="box-header">
                 Pan Point C
+                <img class="box-header-img" src="images/plus.svg">
               </div>
               <div class="box-body">
                 <div class="box-body-background"></div>
@@ -508,7 +527,6 @@
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
 
-        console.log(circleParent ,circleParent.data('id'));
         const dataId = circleParent.data('id');
         $('.box').hide();
         setTimeout(() => {
@@ -517,6 +535,24 @@
 
         $('.description-box').removeClass('description-box-active');
         $('.description-box-'+ dataId).addClass('description-box-active');
+        $event.stopPropagation();
+      });
+
+      $('.description-box-analytics').on('click', ($event) => { 
+        $('.description-box').removeClass('description-box-active');
+        $('.description-box-analytics').addClass('description-box-active');
+        $event.stopPropagation();
+      });
+
+      $('.description-box-data').on('click', ($event) => { 
+        $('.description-box').removeClass('description-box-active');
+        $('.description-box-data').addClass('description-box-active');
+        $event.stopPropagation();
+      });
+
+      $('.description-box-cloud').on('click', ($event) => { 
+        $('.description-box').removeClass('description-box-active');
+        $('.description-box-cloud').addClass('description-box-active');
         $event.stopPropagation();
       });
 
