@@ -506,67 +506,99 @@
     </body>
 
     <script>
-    $(document).ready(function() {
-      $('.circle-icon').on('click', ($event) => {
-        console.log('click', $($event.target.closest('.circle')).find('.circle-img'));
-        const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
+
+      function activateCircle(id) {
+        const circleImg =  $($('.circle-'+ id).closest('.circle')).find('.circle-img');
         $('.circle-img').removeClass('circle-img-active');
         $('.circle-img').addClass('circle-img-inactive');
         $('.circles-background').addClass('circles-background-inactive');
         circleImg.removeClass('circle-img-inactive');
         circleImg.addClass('circle-img-active');
 
-        const circleParent =  $($event.target.closest('.circle'));
+        const circleParent =  $('.circle-'+ id);
         $('.circle').removeClass('circle-active');
         $('.circle').addClass('circle-inactive');
         circleParent.addClass('circle-active');
 
         $('.circle-icon').removeClass('circle-icon-active');
         $('.circle-icon').addClass('circle-icon-inactive');
-        const icon = $($event.target.closest('.circle-icon'));
+        const icon = $($('.circle-'+ id).closest('.circle-icon'));
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
 
-        const dataId = circleParent.data('id');
+
         $('.box').hide();
         setTimeout(() => {
-          $('.box-' + dataId ).show();
+          $('.box-' + id ).show();
         }, 100);
 
         $('.description-box').removeClass('description-box-active');
-        $('.description-box-'+ dataId).addClass('description-box-active');
-        $event.stopPropagation();
-      });
+        $('.description-box-'+ id).addClass('description-box-active');
+      }
 
-      $('.description-box-analytics').on('click', ($event) => { 
-        $('.description-box').removeClass('description-box-active');
-        $('.description-box-analytics').addClass('description-box-active');
-        $event.stopPropagation();
-      });
+      $(document).ready(function() {
+        $('.circle-icon').on('click', ($event) => {
+          const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
+          $('.circle-img').removeClass('circle-img-active');
+          $('.circle-img').addClass('circle-img-inactive');
+          $('.circles-background').addClass('circles-background-inactive');
+          circleImg.removeClass('circle-img-inactive');
+          circleImg.addClass('circle-img-active');
 
-      $('.description-box-data').on('click', ($event) => { 
-        $('.description-box').removeClass('description-box-active');
-        $('.description-box-data').addClass('description-box-active');
-        $event.stopPropagation();
-      });
+          const circleParent =  $($event.target.closest('.circle'));
+          $('.circle').removeClass('circle-active');
+          $('.circle').addClass('circle-inactive');
+          circleParent.addClass('circle-active');
 
-      $('.description-box-cloud').on('click', ($event) => { 
-        $('.description-box').removeClass('description-box-active');
-        $('.description-box-cloud').addClass('description-box-active');
-        $event.stopPropagation();
-      });
+          $('.circle-icon').removeClass('circle-icon-active');
+          $('.circle-icon').addClass('circle-icon-inactive');
+          const icon = $($event.target.closest('.circle-icon'));
+          icon.removeClass('circle-icon-inactive');
+          icon.addClass('circle-icon-active');
 
-      $('body').on('click', ($event) => {
-        $('.circle-img').removeClass('circle-img-active');
-        $('.circle-img').removeClass('circle-img-inactive');
-        $('.circle').removeClass('circle-active');
-        $('.circle').removeClass('circle-inactive');
-        $('.circle-icon').removeClass('circle-icon-active');
-        $('.circle-icon').removeClass('circle-icon-inactive');
-        $('.circles-background').removeClass('circles-background-inactive');
-        $('.description-box').removeClass('description-box-active');
-        $('.box').hide();
+          const dataId = circleParent.data('id');
+          $('.box').hide();
+          setTimeout(() => {
+            $('.box-' + dataId ).show();
+          }, 100);
+
+          $('.description-box').removeClass('description-box-active');
+          $('.description-box-'+ dataId).addClass('description-box-active');
+          $event.stopPropagation();
+        });
+
+        $('.description-box-analytics').on('click', ($event) => { 
+          $('.description-box').removeClass('description-box-active');
+          $('.description-box-analytics').addClass('description-box-active');
+          $event.stopPropagation();
+          activateCircle('analytics');
+        });
+
+        $('.description-box-data').on('click', ($event) => { 
+          $('.description-box').removeClass('description-box-active');
+          $('.description-box-data').addClass('description-box-active');
+          $event.stopPropagation();
+          activateCircle('data');
+        });
+
+        $('.description-box-cloud').on('click', ($event) => { 
+          $('.description-box').removeClass('description-box-active');
+          $('.description-box-cloud').addClass('description-box-active');
+          $event.stopPropagation();
+          activateCircle('cloud');
+        });
+
+        $('body').on('click', ($event) => {
+          $('.circle-img').removeClass('circle-img-active');
+          $('.circle-img').removeClass('circle-img-inactive');
+          $('.circle').removeClass('circle-active');
+          $('.circle').removeClass('circle-inactive');
+          $('.circle-icon').removeClass('circle-icon-active');
+          $('.circle-icon').removeClass('circle-icon-inactive');
+          $('.circles-background').removeClass('circles-background-inactive');
+          $('.description-box').removeClass('description-box-active');
+          $('.box').hide();
+        });
       });
-    });
     </script>
 </html>
