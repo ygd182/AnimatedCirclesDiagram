@@ -27,6 +27,11 @@
 
           body {
             background-color: #080E57;
+            margin: 0;
+          }
+
+          img {
+            width: 100%;
           }
 
           .header-title {
@@ -40,6 +45,7 @@
 
           .content {
             display: flex;
+            align-items: flex-start;
           }
           
           .circle {
@@ -48,6 +54,9 @@
             position: absolute;
             top: -14px;
             left: 221px;
+
+            width: 44.11%;
+            height: auto;
           }
 
           .circle-inactive {
@@ -67,16 +76,35 @@
           .circle-analytics {
             top: 110px;
             left: 435px;
+
+            top: 10.38%;
+            left: 40.65%;
           }
+
+         /* 1059 100
+          110 x
+
+          100 * 282/1059
+
+          1070 100
+          435 x
+          
+          100*274/1070*/
 
           .circle-cloud {
             top: 198px;
             left: 357px;
+
+            top: 18.69%;
+            left: 33.36%;
           }
 
           .circle-data {
             top: 282px;
             left: 274px;
+
+            top: 26.62%;
+            left: 25.60%;
           }
 
           .circle-img {
@@ -96,12 +124,15 @@
             position: absolute;
             top: 5px;
             left: -25px;
-            width: 80px;
-            height: 80px;
+            top: -1%;
+            left: -6%;
+            width: 17%;
             z-index: 2;
             cursor: pointer;
             transition: all 0.3s;
             border-radius: 50%;
+
+            cursor: url('images/Mouse_Pointer.svg');
           }
 
           .circle-icon-active {
@@ -121,7 +152,7 @@
           .circles-wrapper {
             position: relative;
            
-            max-width: 1400px;
+            width: 50%;
           }
 
           .circles-background {
@@ -286,6 +317,7 @@
           .description-box-img {
             height: 44px;
             margin-right: 15px;
+            width: auto;
           }
 
           .description-box-img-white {
@@ -334,6 +366,48 @@
             line-height: 1.2;
             padding: 10px 20px 20px 20px;
             font-family: Avenir;
+          }
+
+          @media screen and (max-width: 1000px) {
+            .header-title {
+              margin: 10px;
+              padding: 10px;
+              margin-bottom: 30px;
+              font-size: 25px;
+              line-height: 1.3;
+            }
+
+            .box {
+              display: none!important;
+            }
+
+            .content {
+              flex-direction: column;
+            }
+
+            .circles-wrapper {
+              width: 100%;
+            }
+
+            .description-side {
+              margin: 0;
+            }
+
+            .circle-icon:hover {
+              transform: none;
+            }
+
+            .description-box-body {
+              height: 0;
+              overflow: hidden;
+              padding: 0;
+              transition: all 0.3s;
+            }
+
+            .description-box.description-box-active   .description-box-body {
+              padding: 10px 20px 20px 20px;
+              height: auto;
+            }
           }
 
         </style>
@@ -546,9 +620,10 @@
 
         $('.circle-icon').removeClass('circle-icon-active');
         $('.circle-icon').addClass('circle-icon-inactive');
-        const icon = $($('.circle-'+ id).closest('.circle-icon'));
+        const icon = $($('.circle-'+ id).find('.circle-icon'));
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
+        console.log(icon);
 
 
         $('.box').hide();
