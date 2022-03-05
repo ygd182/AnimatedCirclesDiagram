@@ -368,7 +368,45 @@
             font-family: Avenir;
           }
 
-          @media screen and (max-width: 1000px) {
+          @media screen and (max-width: 1400px) {
+            .description-side {
+              margin-right: 0;
+            }
+          }
+
+          @media screen and (max-width: 1300px) {
+            .header-title {
+              margin: 10px;
+              padding: 10px;
+              margin-bottom: 30px;
+            }
+
+            .content {
+              flex-direction: column;
+            }
+
+            .circles-wrapper {
+              width: 100%;
+            }
+
+            .description-side {
+              margin: 0;
+            }
+
+            .description-box-body {
+              height: 0;
+              overflow: hidden;
+              padding: 0;
+              transition: all 0.3s;
+            }
+
+            .description-box.description-box-active   .description-box-body {
+              padding: 10px 20px 20px 20px;
+              height: auto;
+            }
+          }
+
+          @media screen and (max-width: 800px) {
             .header-title {
               margin: 10px;
               padding: 10px;
@@ -397,11 +435,17 @@
               transform: none;
             }
 
+            .description-box-header {
+                font-size: 30px;
+                line-height: 2.1;
+            }
+
             .description-box-body {
               height: 0;
               overflow: hidden;
               padding: 0;
               transition: all 0.3s;
+              font-size: 16px;
             }
 
             .description-box.description-box-active   .description-box-body {
@@ -623,8 +667,6 @@
         const icon = $($('.circle-'+ id).find('.circle-icon'));
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
-        console.log(icon);
-
 
         $('.box').hide();
         setTimeout(() => {
