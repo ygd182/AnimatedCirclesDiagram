@@ -786,12 +786,10 @@
           });
           swiper.slideTo(1);
           var y = window.scrollY;
-          if(y === 0) {
-              window.scroll({
-              top: 127,
-              behavior: 'smooth'
-            });
-          }
+            window.scroll({
+            top: $('.header-title').height() + 40,
+            behavior: 'smooth'
+          });
         }
       }
 
