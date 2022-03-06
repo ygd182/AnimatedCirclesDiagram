@@ -513,7 +513,7 @@
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-hash="slide1">
               <div class="box">
                 <div class="box-header">
                   Pan Point C
@@ -527,7 +527,7 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-hash="slide2">
               <div class="box">
                 <div class="box-header">
                   Pan Point C
@@ -542,7 +542,7 @@
               </div>
               
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-hash="slide3">
               <div class="box">
                 <div class="box-header">
                   Pan Point C
@@ -768,6 +768,9 @@
           pagination: {
             el: '.swiper-pagination',
           },
+          hashNavigation: {
+            watchState: true,
+          },
 
           // Navigation arrows
           navigation: {
@@ -781,6 +784,7 @@
             hide: true
           },
         });
+        swiper.slideTo(1);
       }
 
       function activateCircle(id) {
