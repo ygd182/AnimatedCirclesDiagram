@@ -65,7 +65,12 @@
           }
 
           .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-              bottom: 30px;
+            bottom: 40px;
+          }
+
+          span.swiper-pagination-bullet {
+              background: #fff;
+              border: 1px solid #fff;
           }
           
           .swiper-scrollbar {
@@ -75,6 +80,7 @@
           .swiper .box {
             position: relative;
             padding-bottom: 30px;
+            transition: none;
           }
 
           .swiper .box .box-body {
@@ -441,7 +447,7 @@
             .swiper .box-active {
               width: auto;
               visibility: visible;
-              margin: 20px;
+              margin: 0 20px;
             }
 
             .content {
@@ -782,8 +788,8 @@
         const icon = $($('.circle-'+ id).find('.circle-icon'));
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
-
-        swiper.slideTo(1);
+        initSwiper();
+       // swiper.slideTo(1);
         $('.box').removeClass('box-active');
         $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
         setTimeout(() => {
@@ -796,7 +802,7 @@
       }
 
       $(document).ready(function() {
-        initSwiper();
+       
         $('.circle-icon').on('click', ($event) => {
           const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
           $('.circle-img').removeClass('circle-img-active');
@@ -815,7 +821,7 @@
           const icon = $($event.target.closest('.circle-icon'));
           icon.removeClass('circle-icon-inactive');
           icon.addClass('circle-icon-active');
-          swiper.slideTo(1);
+          
           const id = circleParent.data('id');
           $('.box').removeClass('box-active');
           $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
@@ -827,6 +833,8 @@
 
           $('.description-box').removeClass('description-box-active');
           $('.description-box-'+ id).addClass('description-box-active');
+          initSwiper();
+         // swiper.slideTo(1);
           $event.stopPropagation();
         });
 
@@ -849,9 +857,11 @@
           $('.description-box-cloud').addClass('description-box-active');
           $event.stopPropagation();
           activateCircle('cloud');
+         
         });
 
         $('body').on('click', ($event) => {
+          if ( swiper !== undefined ) swiper.destroy( true, true );
           $('.circle-img').removeClass('circle-img-active');
           $('.circle-img').removeClass('circle-img-inactive');
           $('.circle').removeClass('circle-active');
@@ -862,6 +872,14 @@
           $('.description-box').removeClass('description-box-active');
           $('.box').removeClass('box-active');
           $('.box').removeClass('box-active box-analytics box-cloud box-data');
+        });
+
+        $('.swiper').on('click', ($event) => { 
+          $event.stopPropagation();
+        });
+
+        $('.box').on('click', ($event) => { 
+          $event.stopPropagation();
         });
       });
     </script>
