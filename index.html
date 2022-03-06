@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <title>Blank HTML5</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+        />
+
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <style>
 
           @font-face {
@@ -47,14 +53,36 @@
             display: flex;
             align-items: flex-start;
           }
+
+          .swiper {
+            width: 100%;
+            display: none;
+          }
+
+          .swiper-button-prev,
+          .swiper-button-next {
+            display: none;
+          }
+
+          .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+              bottom: 30px;
+          }
+          
+          .swiper-scrollbar {
+            display: none;
+          }
+
+          .swiper .box {
+            position: relative;
+            padding-bottom: 30px;
+          }
+
+          .swiper .box .box-body {
+            padding-bottom: 40px;
+          }
           
           .circle {
-            width: 470px;
-            height: 470px;
             position: absolute;
-            top: -14px;
-            left: 221px;
-
             width: 44.11%;
             height: auto;
           }
@@ -74,35 +102,16 @@
           }
 
           .circle-analytics {
-            top: 110px;
-            left: 435px;
-
             top: 10.38%;
             left: 40.65%;
           }
 
-         /* 1059 100
-          110 x
-
-          100 * 282/1059
-
-          1070 100
-          435 x
-          
-          100*274/1070*/
-
           .circle-cloud {
-            top: 198px;
-            left: 357px;
-
             top: 18.69%;
             left: 33.36%;
           }
 
           .circle-data {
-            top: 282px;
-            left: 274px;
-
             top: 26.62%;
             left: 25.60%;
           }
@@ -170,6 +179,7 @@
             z-index: 3;
             transition: all 0.3s;
             font-family: Avenir;
+            display: none;
           }
 
           .box-top {
@@ -259,6 +269,10 @@
           .box-cloud .box-body-background {
             background: transparent linear-gradient(312deg, #EE576E 0%, #020759 100%) 0% 0% no-repeat padding-box;
             opacity: 0.85;
+          }
+
+          .box.box-active {
+            display: block;
           }
 
           .text-cloud {
@@ -385,6 +399,10 @@
               flex-direction: column;
             }
 
+            .swiper {
+              display: block;
+            }
+
             .circles-wrapper {
               width: 100%;
             }
@@ -416,7 +434,14 @@
             }
 
             .box {
-              display: none!important;
+              visibility: hidden;
+              display: block;
+            }
+
+            .swiper .box-active {
+              width: auto;
+              visibility: visible;
+              margin: 20px;
             }
 
             .content {
@@ -425,6 +450,10 @@
 
             .circles-wrapper {
               width: 100%;
+            }
+
+            .circles-wrapper .box {
+              display: none!important;
             }
 
             .description-side {
@@ -436,8 +465,8 @@
             }
 
             .description-box-header {
-                font-size: 30px;
-                line-height: 2.1;
+              font-size: 30px;
+              line-height: 2.1;
             }
 
             .description-box-body {
@@ -461,6 +490,64 @@
         Change is only as transformative as <span class="text-data">Data</span>, <span class="text-analytics">Analytics</span> and <span class="text-cloud">Cloud</span> are <span class="text-gradient">interconnected</span> and leveraged
       </h1>
       <div class="content">
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <div class="box">
+                <div class="box-header">
+                  Pan Point C
+                  <img class="box-header-img" src="images/plus.svg">
+                </div>
+                <div class="box-body">
+                  <div class="box-body-background"></div>
+                  <div class="box-body-content">
+                    Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="box">
+                <div class="box-header">
+                  Pan Point C
+                  <img class="box-header-img" src="images/plus.svg">
+                </div>
+                <div class="box-body">
+                  <div class="box-body-background"></div>
+                  <div class="box-body-content">
+                    Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="swiper-slide">
+              <div class="box">
+                <div class="box-header">
+                  Pan Point C
+                  <img class="box-header-img" src="images/plus.svg">
+                </div>
+                <div class="box-body">
+                  <div class="box-body-background"></div>
+                  <div class="box-body-content">
+                    Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor sit amet, consectetuer Lorem ipsum dolor
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+          <!-- If we need pagination -->
+          <div class="swiper-pagination"></div>
+        
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
+        </div>
         <div class="circles-wrapper">
             <div class="circles-background">
               <img src="images/Diagram bg.png">
@@ -648,6 +735,34 @@
     </body>
 
     <script>
+      let swiper;
+ 
+      function initSwiper() {
+        swiper = new Swiper('.swiper', {
+          // Optional parameters
+          
+          loop: true,
+          autoHeight: true,
+          calculateHeight:true,
+
+          // If we need pagination
+          pagination: {
+            el: '.swiper-pagination',
+          },
+
+          // Navigation arrows
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+
+          // And if we need scrollbar
+          scrollbar: {
+            el: '.swiper-scrollbar',
+            hide: true
+          },
+        });
+      }
 
       function activateCircle(id) {
         const circleImg =  $($('.circle-'+ id).closest('.circle')).find('.circle-img');
@@ -668,9 +783,12 @@
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
 
-        $('.box').hide();
+        swiper.slideTo(1);
+        $('.box').removeClass('box-active');
+        $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
         setTimeout(() => {
-          $('.box-' + id ).show();
+          $('.box-' + id ).addClass('box-active');
+          $('.swiper .box' ).addClass('box-active box-'+id);
         }, 100);
 
         $('.description-box').removeClass('description-box-active');
@@ -678,6 +796,7 @@
       }
 
       $(document).ready(function() {
+        initSwiper();
         $('.circle-icon').on('click', ($event) => {
           const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
           $('.circle-img').removeClass('circle-img-active');
@@ -696,15 +815,18 @@
           const icon = $($event.target.closest('.circle-icon'));
           icon.removeClass('circle-icon-inactive');
           icon.addClass('circle-icon-active');
-
-          const dataId = circleParent.data('id');
-          $('.box').hide();
+          swiper.slideTo(1);
+          const id = circleParent.data('id');
+          $('.box').removeClass('box-active');
+          $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
           setTimeout(() => {
-            $('.box-' + dataId ).show();
+         //   $('.box-' + dataId ).show();
+            $('.box-' + id ).addClass('box-active');
+            $('.swiper .box').addClass('box-active box-' + id);
           }, 100);
 
           $('.description-box').removeClass('description-box-active');
-          $('.description-box-'+ dataId).addClass('description-box-active');
+          $('.description-box-'+ id).addClass('description-box-active');
           $event.stopPropagation();
         });
 
@@ -738,7 +860,8 @@
           $('.circle-icon').removeClass('circle-icon-inactive');
           $('.circles-background').removeClass('circles-background-inactive');
           $('.description-box').removeClass('description-box-active');
-          $('.box').hide();
+          $('.box').removeClass('box-active');
+          $('.box').removeClass('box-active box-analytics box-cloud box-data');
         });
       });
     </script>
