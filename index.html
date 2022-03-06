@@ -418,9 +418,9 @@
               flex-direction: column;
             }
 
-            .swiper {
+           /* .swiper {
               display: block;
-            }
+            }*/
 
             .circles-wrapper {
               width: 100%;
@@ -757,34 +757,44 @@
       let swiper;
  
       function initSwiper() {
-        swiper = new Swiper('.swiper', {
-          // Optional parameters
-          
-          loop: true,
-         // autoHeight: true,
-          calculateHeight:true,
+        if($(window).width() <= 785 ) {
+          $('.swiper').show();
+          swiper = new Swiper('.swiper', {
+            // Optional parameters
+            
+            loop: true,
+          // autoHeight: true,
+            calculateHeight:true,
 
-          // If we need pagination
-          pagination: {
-            el: '.swiper-pagination',
-          },
-          hashNavigation: {
-            watchState: true,
-          },
+            // If we need pagination
+            pagination: {
+              el: '.swiper-pagination',
+            },
+            hashNavigation: {
+              watchState: true,
+            },
 
-          // Navigation arrows
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
+            // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
 
-          // And if we need scrollbar
-          scrollbar: {
-            el: '.swiper-scrollbar',
-            hide: true
-          },
-        });
-        swiper.slideTo(1);
+            // And if we need scrollbar
+            scrollbar: {
+              el: '.swiper-scrollbar',
+              hide: true
+            },
+          });
+          swiper.slideTo(1);
+          var y = window.scrollY;
+          if(y === 0) {
+              window.scroll({
+              top: 127,
+              behavior: 'smooth'
+            });
+          }
+        }
       }
 
       function activateCircle(id) {
@@ -889,6 +899,7 @@
           $('.description-box').removeClass('description-box-active');
           $('.box').removeClass('box-active');
           $('.box').removeClass('box-active box-analytics box-cloud box-data');
+          $('.swiper').hide();
         });
 
         $('.swiper').on('click', ($event) => { 
