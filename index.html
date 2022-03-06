@@ -500,6 +500,10 @@
               padding: 10px 20px 20px 20px;
               height: auto;
             }
+
+            .description-box-inactive {
+              display: none;
+            }
           }
 
         </style>
@@ -779,12 +783,6 @@
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
             },
-
-            // And if we need scrollbar
-            scrollbar: {
-              el: '.swiper-scrollbar',
-              hide: true
-            },
           });
           swiper.slideTo(1);
           var y = window.scrollY;
@@ -852,6 +850,7 @@
           const id = circleParent.data('id');
           $('.box').removeClass('box-active');
           $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
+          $('.description-box').addClass('description-box-inactive');
           setTimeout(() => {
          //   $('.box-' + dataId ).show();
             $('.box-' + id ).addClass('box-active');
@@ -860,6 +859,7 @@
 
           $('.description-box').removeClass('description-box-active');
           $('.description-box-'+ id).addClass('description-box-active');
+          $('.description-box-'+ id).removeClass('description-box-inactive');
           initSwiper();
          // swiper.slideTo(1);
           $event.stopPropagation();
@@ -867,6 +867,10 @@
 
         $('.description-box-analytics').on('click', ($event) => { 
           $('.description-box').removeClass('description-box-active');
+
+          $('.description-box-cloud').addClass('description-box-inactive');
+          $('.description-box-data').addClass('description-box-inactive');
+
           $('.description-box-analytics').addClass('description-box-active');
           $event.stopPropagation();
           activateCircle('analytics');
@@ -874,6 +878,10 @@
 
         $('.description-box-data').on('click', ($event) => { 
           $('.description-box').removeClass('description-box-active');
+
+          $('.description-box-analytics').addClass('description-box-inactive');
+          $('.description-box-cloud').addClass('description-box-inactive');
+
           $('.description-box-data').addClass('description-box-active');
           $event.stopPropagation();
           activateCircle('data');
@@ -881,6 +889,10 @@
 
         $('.description-box-cloud').on('click', ($event) => { 
           $('.description-box').removeClass('description-box-active');
+
+          $('.description-box-analytics').addClass('description-box-inactive');
+          $('.description-box-data').addClass('description-box-inactive');
+
           $('.description-box-cloud').addClass('description-box-active');
           $event.stopPropagation();
           activateCircle('cloud');
@@ -897,6 +909,7 @@
           $('.circle-icon').removeClass('circle-icon-inactive');
           $('.circles-background').removeClass('circles-background-inactive');
           $('.description-box').removeClass('description-box-active');
+          $('.description-box').removeClass('description-box-inactive');
           $('.box').removeClass('box-active');
           $('.box').removeClass('box-active box-analytics box-cloud box-data');
           $('.swiper').hide();
