@@ -49,7 +49,7 @@
           }
 
           .header-title {
-            font-size: 72px;
+            font-size: 54px;
             font-weight: bold;
             line-height: 1.3;
             color: #FFFFFF;
@@ -163,20 +163,23 @@
 
             cursor: url('images/Mouse_Pointer.svg');
           }
-
-          .circle-icon-active {
-            opacity: 1;
-          }
-
           .circle-icon-inactive {
             opacity: 0.5;
           }
 
-          .circle-icon:hover {
+          .circle-icon:hover,
+          .circle-icon-hover {
             opacity: 1;
             transform: scale(1.25);
             z-index: 3;
           }
+
+
+          .circle-icon-active {
+            opacity: 1;
+            transform: none;
+          }
+
 
           .circles-wrapper {
             position: relative;
@@ -325,11 +328,12 @@
             padding: 20px;
             margin-bottom: 10px;
             cursor: pointer;
+            transition: opacity 0.3s;
           }
 
           .description-box-background {
-            background: transparent linear-gradient(352deg, #FFFFFF00 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
-            opacity: 0.25;
+            background: transparent linear-gradient(340deg, #FFF0 50%, #FFF 100%) 0% 0% no-repeat padding-box;
+            opacity: 0.15;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -340,8 +344,8 @@
 
           .description-box-header {
             font-weight: bold;
-            font-size: 44px;
-            line-height: 2.1;
+            font-size: 40px;
+            line-height: 1.4;
             padding: 0 20px;
             display: flex;
             align-items: center;
@@ -402,6 +406,14 @@
             font-family: Avenir;
           }
 
+          .description-box-inactive-hover {
+            opacity: 0.5;
+          }
+
+          .description-box-active {
+            opacity: 1;
+          }
+
           @media screen and (max-width: 1400px) {
             .description-side {
               margin-right: 0;
@@ -418,10 +430,6 @@
             .content {
               flex-direction: column;
             }
-
-           /* .swiper {
-              display: block;
-            }*/
 
             .circles-wrapper {
               width: 100%;
@@ -794,6 +802,11 @@
         }
       }
 
+      function activateCircleHover(id) {
+        const icon = $($('.circle-'+ id).find('.circle-icon'));
+        icon.addClass('circle-icon-hover');
+      }
+
       function activateCircle(id) {
         const circleImg =  $($('.circle-'+ id).closest('.circle')).find('.circle-img');
         $('.circle-img').removeClass('circle-img-active');
@@ -813,7 +826,6 @@
         icon.removeClass('circle-icon-inactive');
         icon.addClass('circle-icon-active');
         initSwiper();
-       // swiper.slideTo(1);
         $('.box').removeClass('box-active');
         $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
         setTimeout(() => {
@@ -851,7 +863,6 @@
           $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
           $('.description-box').addClass('description-box-inactive');
           setTimeout(() => {
-         //   $('.box-' + dataId ).show();
             $('.box-' + id ).addClass('box-active');
             $('.swiper .box').addClass('box-active box-' + id);
           }, 100);
@@ -860,7 +871,6 @@
           $('.description-box-'+ id).addClass('description-box-active');
           $('.description-box-'+ id).removeClass('description-box-inactive');
           initSwiper();
-         // swiper.slideTo(1);
           $event.stopPropagation();
         });
 
@@ -896,6 +906,29 @@
           $event.stopPropagation();
           activateCircle('cloud');
          
+        });
+
+        $('.description-box-analytics').on('mouseover', ($event) => { 
+          $('.description-box-cloud').addClass('description-box-inactive-hover');
+          $('.description-box-data').addClass('description-box-inactive-hover');
+          activateCircleHover('analytics');
+        });
+
+        $('.description-box-data').on('mouseover', ($event) => { 
+          $('.description-box-analytics').addClass('description-box-inactive-hover');
+          $('.description-box-cloud').addClass('description-box-inactive-hover');
+          activateCircleHover('data');
+        });
+
+        $('.description-box-cloud').on('mouseover', ($event) => { 
+          $('.description-box-analytics').addClass('description-box-inactive-hover');
+          $('.description-box-data').addClass('description-box-inactive-hover');
+          activateCircleHover('cloud');
+        });
+
+        $('.description-box').on('mouseleave', ($event) => { 
+          $('.description-box').removeClass('description-box-inactive-hover');
+          $('.circle-icon').removeClass('circle-icon-hover');
         });
 
         $('body').on('click', ($event) => {
