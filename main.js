@@ -160,7 +160,7 @@
       $('.circle-icon').removeClass('circle-icon-hover');
     });
 
-    $('body').on('click', ($event) => {
+    $('.wrapper').on('click', ($event) => {
       if ( swiper !== undefined ) swiper.destroy( true, true );
       $('.circle-img').removeClass('circle-img-active');
       $('.circle-img').removeClass('circle-img-inactive');
