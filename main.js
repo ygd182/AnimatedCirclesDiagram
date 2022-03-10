@@ -43,7 +43,7 @@
       });
       swiper.slideTo(1);
       var y = window.scrollY;
-        window.scroll({
+      window.scroll({
         top: $('.header-title').height() + 40,
         behavior: 'smooth'
       });
@@ -78,7 +78,7 @@
     $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
     setTimeout(() => {
       $('.box-' + id ).addClass('box-active');
-      $('.swiper .box' ).addClass('box-active box-'+id);
+      $('.swiper .box' ).addClass('box-active box-'+ id);
     }, 100);
 
     $('.description-box').removeClass('description-box-active');
