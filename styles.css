@@ -401,6 +401,10 @@ span.swiper-pagination-bullet {
   opacity: 0.5;
 }
 
+.description-box-inactive .description-box-body {
+  font-weight: bold;
+}
+
 .description-box-active {
   opacity: 1;
 }
