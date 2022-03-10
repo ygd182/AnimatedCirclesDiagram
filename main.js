@@ -106,6 +106,7 @@
     $('.description-box-analytics').on('click', ($event) => { 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
+      $('.description-box-analytics').removeClass('description-box-inactive');
 
       $('.description-box-cloud').addClass('description-box-inactive');
       $('.description-box-data').addClass('description-box-inactive');
@@ -121,6 +122,7 @@
     $('.description-box-data').on('click', ($event) => { 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
+      $('.description-box-data').removeClass('description-box-inactive');
 
       $('.description-box-analytics').addClass('description-box-inactive');
       $('.description-box-cloud').addClass('description-box-inactive');
@@ -137,6 +139,7 @@
     $('.description-box-cloud').on('click', ($event) => { 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
+      $('.description-box-cloud').removeClass('description-box-inactive');
 
       $('.description-box-analytics').addClass('description-box-inactive');
       $('.description-box-data').addClass('description-box-inactive');
