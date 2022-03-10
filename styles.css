@@ -1,19 +1,37 @@
 @font-face {
-    font-family: Futura;
-    font-weight: 300;
-    src: url("fonts/FuturaStd-Medium.otf") format("opentype");
+  font-family: Futura;
+  font-weight: 300;
+  src: url("fonts/FuturaStd-Medium.otf") format("opentype");
 }
 
 @font-face {
-    font-family: Futura;
-    font-weight: bold;
-    src: url("fonts/FuturaStd-Bold.otf") format("opentype");
+  font-family: Futura;
+  font-weight: bold;
+  src: url("fonts/FuturaStd-Bold.otf") format("opentype");
 }
 
 @font-face {
-    font-family: Avenir;
-    font-weight: 300;
-    src: url("fonts/Avenir.ttc") format("opentype");
+  font-family: Jost;
+  font-weight: 300;
+  src: url("fonts/Jost/static/Jost-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Jost;
+  font-weight: bold;
+  src: url("fonts/Jost/static/Jost-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Avenir;
+  font-weight: 300;
+  src: url("fonts/Avenir/AvenirLTPro-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Avenir;
+  font-weight: bold;
+  src: url("fonts/Avenir/AvenirNextLTPro-Bold.otf") format("opentype");
 }
 
 body {
@@ -191,7 +209,7 @@ span.swiper-pagination-bullet {
   color: #FFFFFF;
   z-index: 3;
   transition: all 0.3s;
-  font-family: Avenir;
+  font-family: Avenir, Jost;
   display: none;
 }
 
