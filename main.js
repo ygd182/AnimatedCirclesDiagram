@@ -104,10 +104,14 @@
     });
 
     $('.description-box-analytics').on('click', ($event) => { 
+      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
 
       $('.description-box-cloud').addClass('description-box-inactive');
       $('.description-box-data').addClass('description-box-inactive');
+
+      $('.description-box-data .description-box-body').addClass('text-analytics');
+      $('.description-box-cloud .description-box-body').addClass('text-analytics');
 
       $('.description-box-analytics').addClass('description-box-active');
       $event.stopPropagation();
@@ -115,10 +119,15 @@
     });
 
     $('.description-box-data').on('click', ($event) => { 
+      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
 
       $('.description-box-analytics').addClass('description-box-inactive');
       $('.description-box-cloud').addClass('description-box-inactive');
+
+      $('.description-box-analytics .description-box-body').addClass('text-data');
+      $('.description-box-cloud .description-box-body').addClass('text-data');
+
 
       $('.description-box-data').addClass('description-box-active');
       $event.stopPropagation();
@@ -126,10 +135,14 @@
     });
 
     $('.description-box-cloud').on('click', ($event) => { 
+      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
 
       $('.description-box-analytics').addClass('description-box-inactive');
       $('.description-box-data').addClass('description-box-inactive');
+
+      $('.description-box-data .description-box-body').addClass('text-cloud');
+      $('.description-box-analytics .description-box-body').addClass('text-cloud');
 
       $('.description-box-cloud').addClass('description-box-active');
       $event.stopPropagation();
@@ -171,6 +184,7 @@
       $('.circles-background').removeClass('circles-background-inactive');
       $('.description-box').removeClass('description-box-active');
       $('.description-box').removeClass('description-box-inactive');
+      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.box').removeClass('box-active');
       $('swiper .box').removeClass('box-active box-analytics box-cloud box-data');
       $('.swiper').hide();
