@@ -209,7 +209,7 @@ span.swiper-pagination-bullet {
   color: #FFFFFF;
   z-index: 3;
   transition: all 0.3s;
-  font-family: Avenir, Jost;
+  font-family: Avenir, Jost, Sans-Serif;
   display: none;
 }
 
@@ -412,7 +412,7 @@ span.swiper-pagination-bullet {
   font-size: 18px;
   line-height: 1.2;
   padding: 10px 20px 20px 20px;
-  font-family: Avenir;
+  font-family: Avenir, Jost, Sans-Serif;
 }
 
 .description-box-inactive-hover {
