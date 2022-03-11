@@ -1,22 +1,22 @@
 (function(){
   let swiper;
 
-  analyticsDescriptionData = {
-    analytics :'Analytic capabilities can generate tremendous value. Yet, over 80% of analytic projects never have their insights acted upon. SKALE UP your insight to action and embed insight into day to day operations.',
-    cloud :"You don’t need Big Data; you need Big Insight. You need the Cloud’s storage and compute capacity to SKALE UP your Analytics capabilities.",
-    data :'Data is an economic asset that can create value beyond its original purpose. SKALE UP the Data you use for analytics and find new insights, new value and new products.'
-  };
-
-  cloudDescriptionData = {
-    cloud: 'The Cloud is where you need to be to do business. With the Cloud comes increased complexity and costs that are not under control. Our Cloud Squadron can help you address these challenges to SKALE UP your Cloud environment.',
-    analytics: 'The Cloud can connect your entire enterprise no matter where they are. Yet only 3% of employees report they can get answers to data questions in seconds. SKALE UP your organization to the speed of questions.',
-    data: 'Two thirds of companies report Data migration to the Cloud takes more time than planned. Our Cloud Squadron to SKALE UP the success of your Cloud Data Migration.'
-  };
-
-  dataDescriptionData = {
-    data: 'Better data is better business and Customer satisfaction. Yet only 17% of organizations reported that their Data Quality improved over the last three years. SKALE UP your Data Quality with ProSkales.',
-    cloud: "62% of Cloud experts say integration of legacy systems data and Cloud data is their biggest challenge. Don’t waste time solving problems that have already been solved. Our Cloud Squadron is ready. SKALE UP your Data integration.",
-    analytics: "Data is the building block of Analytics. Only 25% of analysts feel confident when working with their company’s data. SKALE UP the trust in data and analytics."
+ descriptionData = {
+    analytics: {
+      analytics :'Analytic capabilities can generate tremendous value. Yet, over 80% of analytic projects never have their insights acted upon. SKALE UP your insight to action and embed insight into day to day operations.',
+      cloud :"You don’t need Big Data; you need Big Insight. You need the Cloud’s storage and compute capacity to SKALE UP your Analytics capabilities.",
+      data :'Data is an economic asset that can create value beyond its original purpose. SKALE UP the Data you use for analytics and find new insights, new value and new products.'
+    },
+    cloud: {
+      cloud: 'The Cloud is where you need to be to do business. With the Cloud comes increased complexity and costs that are not under control. Our Cloud Squadron can help you address these challenges to SKALE UP your Cloud environment.',
+      analytics: 'The Cloud can connect your entire enterprise no matter where they are. Yet only 3% of employees report they can get answers to data questions in seconds. SKALE UP your organization to the speed of questions.',
+      data: 'Two thirds of companies report Data migration to the Cloud takes more time than planned. Our Cloud Squadron to SKALE UP the success of your Cloud Data Migration.'
+    },
+    data : {
+      data: 'Better data is better business and Customer satisfaction. Yet only 17% of organizations reported that their Data Quality improved over the last three years. SKALE UP your Data Quality with ProSkales.',
+      cloud: "62% of Cloud experts say integration of legacy systems data and Cloud data is their biggest challenge. Don’t waste time solving problems that have already been solved. Our Cloud Squadron is ready. SKALE UP your Data integration.",
+      analytics: "Data is the building block of Analytics. Only 25% of analysts feel confident when working with their company’s data. SKALE UP the trust in data and analytics."
+    }
   };
 
 
@@ -115,17 +115,26 @@
         $('.swiper .box').addClass('box-active box-' + id);
       }, 100);
 
+      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
       $('.description-box-'+ id).addClass('description-box-active');
       $('.description-box-'+ id).removeClass('description-box-inactive');
+
+      $('.description-box-cloud .description-box-body').html(descriptionData[id].cloud);
+      $('.description-box-data .description-box-body').html(descriptionData[id].data);
+      $('.description-box-analytics .description-box-body').html(descriptionData[id].analytics);
+
+      $('.description-box .description-box-body').addClass('text-' + id);
+      $('.description-box-'+id+' .description-box-body').removeClass('text-' + id);
+
       initSwiper();
       $event.stopPropagation();
     });
 
     $('.description-box-analytics').on('click', ($event) => { 
-      $('.description-box-analytics .description-box-body').html(analyticsDescriptionData.analytics);
-      $('.description-box-cloud .description-box-body').html(analyticsDescriptionData.cloud);
-      $('.description-box-data .description-box-body').html(analyticsDescriptionData.data);
+      $('.description-box-analytics .description-box-body').html(descriptionData['analytics'].analytics);
+      $('.description-box-cloud .description-box-body').html(descriptionData['analytics'].cloud);
+      $('.description-box-data .description-box-body').html(descriptionData['analytics'].data);
 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
@@ -143,9 +152,9 @@
     });
 
     $('.description-box-data').on('click', ($event) => { 
-      $('.description-box-data .description-box-body').html(dataDescriptionData.data);
-      $('.description-box-cloud .description-box-body').html(dataDescriptionData.cloud);
-      $('.description-box-analytics .description-box-body').html(dataDescriptionData.analytics);
+      $('.description-box-data .description-box-body').html(descriptionData['data'].data);
+      $('.description-box-cloud .description-box-body').html(descriptionData['data'].cloud);
+      $('.description-box-analytics .description-box-body').html(descriptionData['data'].analytics);
 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
@@ -164,9 +173,9 @@
     });
 
     $('.description-box-cloud').on('click', ($event) => { 
-      $('.description-box-cloud .description-box-body').html(cloudDescriptionData.cloud);
-      $('.description-box-data .description-box-body').html(cloudDescriptionData.data);
-      $('.description-box-analytics .description-box-body').html(cloudDescriptionData.analytics);
+      $('.description-box-cloud .description-box-body').html(descriptionData['cloud'].cloud);
+      $('.description-box-data .description-box-body').html(descriptionData['cloud'].data);
+      $('.description-box-analytics .description-box-body').html(descriptionData['cloud'].analytics);
 
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
       $('.description-box').removeClass('description-box-active');
@@ -219,9 +228,9 @@
       $('.description-box').removeClass('description-box-active');
       $('.description-box').removeClass('description-box-inactive');
       $('.description-box-body').removeClass('text-analytics text-data text-cloud');
-      $('.description-box-analytics .description-box-body').html(analyticsDescriptionData.analytics);
-      $('.description-box-cloud .description-box-body').html(cloudDescriptionData.cloud);
-      $('.description-box-data .description-box-body').html(dataDescriptionData.data);
+      $('.description-box-analytics .description-box-body').html(descriptionData.analytics.analytics);
+      $('.description-box-cloud .description-box-body').html(descriptionData.cloud.cloud);
+      $('.description-box-data .description-box-body').html(descriptionData.data.data);
 
       $('.box').removeClass('box-active');
       $('swiper .box').removeClass('box-active box-analytics box-cloud box-data');
