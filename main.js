@@ -19,6 +19,51 @@
     }
   };
 
+  boxesData = {
+    analytics: {
+      top: {
+        title: 'Data Swamp',
+        value: 'The amount of data you are collecting will not decrease. Make sure you have strong Data Governance in place before it turns into a Data Swamp. Learn how.'
+      },
+      left: {
+        title: 'Complex Data Pipelines',
+        value: 'Is maintaining complex data pipelines consuming so many resources it is impacting your ability to scale? We can reduce this complexity and increase your capacity to grow.'
+      },
+      bottom: {
+        title: 'Complex Data Lake Operations',
+        value: 'If your Data Lake is consuming more and more of your team&#39;s resources to support, automation solutions can help.'
+      }
+    },
+    cloud: {
+      top: {
+        title: 'Cloud Data Migration',
+        value: 'Two thirds of companies report Cloud Data Migration takes longer than planned. Need help with your timelines?'
+      },
+      left: {
+        title: 'Lack visibility on Cloud usage and performance',
+        value: "It's 6:00 o'clock. Do you know what your Cloud is doing? Like most companies, probably not. And it is costing you money."
+      },
+      bottom: {
+        title: 'Hybrid Cloud Performance',
+        value: 'On average, Hybrid Cloud is only meeting 53% of the expected business benefits. A second look by our Cloud Squadron may be needed.'
+      }
+    },
+    data: {
+      top: {
+        title: 'Why is Analytics not Aligned With Business',
+        value: 'No matter how cool the insight, if it does not support your business strategy it is of little value. Value Engineering ensures your Analytics Projects are aligned with your business goals.'
+      },
+      left: {
+        title: 'Backlog of Report Requests',
+        value: 'Are your Data Engineers and Data nalysts underwater with requests for reports? It is possible to reduce the orkload with the right mix of Dashboards and Self Serve Analytics.'
+      },
+      bottom: {
+        title: 'Analytic Migration',
+        value: 'There are more cost effective solutions for your Analytics. Let us do a tool assessment for your best Analytics Stack and migrate your solutions.'
+      }
+    },
+  }
+
 
   function initSwiper() {
     if($(window).width() <= 785 ) {
@@ -55,6 +100,17 @@
     icon.addClass('circle-icon-hover');
   }
 
+  function loadSwiperBoxContent(id) {
+    $('.swiper [data-hash="slide1"] .box .box-header').html(boxesData[id].top.title);
+    $('.swiper [data-hash="slide1"] .box .box-body-content').html(boxesData[id].top.value);
+
+    $('.swiper [data-hash="slide2"] .box .box-header').html(boxesData[id].left.title);
+    $('.swiper [data-hash="slide2"] .box .box-body-content').html(boxesData[id].left.value);
+
+    $('.swiper [data-hash="slide3"] .box .box-header').html(boxesData[id].bottom.title);
+    $('.swiper [data-hash="slide3"] .box .box-body-content').html(boxesData[id].bottom.value);
+  } 
+
   function activateCircle(id) {
     const circleImg =  $($('.circle-'+ id).closest('.circle')).find('.circle-img');
     $('.circle-img').removeClass('circle-img-active');
@@ -76,6 +132,9 @@
     initSwiper();
     $('.box').removeClass('box-active');
     $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
+    
+    loadSwiperBoxContent(id);
+
     setTimeout(() => {
       $('.box-' + id ).addClass('box-active');
       $('.swiper .box' ).addClass('box-active box-'+ id);
@@ -126,6 +185,8 @@
 
       $('.description-box .description-box-body').addClass('text-' + id);
       $('.description-box-'+id+' .description-box-body').removeClass('text-' + id);
+
+      loadSwiperBoxContent(id);
 
       initSwiper();
       $event.stopPropagation();
