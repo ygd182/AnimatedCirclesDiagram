@@ -428,10 +428,28 @@ span.swiper-pagination-bullet {
   opacity: 1;
 }
 
+@media screen and (min-width: 1300px) and (max-width: 1600px) { 
+  .box-top {
+    top: -30%;
+    left: 50%;
+  }
+
+  .box-left {
+    top: 30%;
+    left: -10%;
+  }
+
+  .box-bottom {
+    top: 85%;
+    right: -15%;
+  }
+}
+
 @media screen and (max-width: 1400px) {
   .description-side {
     margin-right: 0;
   }
+  
 }
 
 @media screen and (max-width: 1300px) {
@@ -466,6 +484,11 @@ span.swiper-pagination-bullet {
   .description-box.description-box-active   .description-box-body {
     padding: 10px 20px 20px 20px;
     height: auto;
+  }
+
+  .box-left {
+    top: 55%;
+    left: -8%;
   }
 }
 
