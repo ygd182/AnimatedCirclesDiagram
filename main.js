@@ -1,7 +1,8 @@
 (function(){
   let swiper;
+  let activeCircles = false;
 
- descriptionData = {
+  descriptionData = {
     analytics: {
       analytics :'Analytic capabilities can generate tremendous value. Yet, over 80% of analytic projects never have their insights acted upon. SKALE UP your insight to action and embed insight into day to day operations.',
       cloud :"You don’t need Big Data; you need Big Insight. You need the Cloud’s storage and compute capacity to SKALE UP your Analytics capabilities.",
@@ -112,6 +113,7 @@
   } 
 
   function activateCircle(id) {
+    activeCircles = true;
     const circleImg =  $($('.circle-'+ id).closest('.circle')).find('.circle-img');
     $('.circle-img').removeClass('circle-img-active');
     $('.circle-img').addClass('circle-img-inactive');
@@ -144,48 +146,91 @@
     $('.description-box-'+ id).addClass('description-box-active');
   }
 
+  function activateByCircle($event) {
+    const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
+    $('.circle-img').removeClass('circle-img-active');
+    $('.circle-img').addClass('circle-img-inactive');
+    $('.circles-background').addClass('circles-background-inactive');
+    circleImg.removeClass('circle-img-inactive');
+    circleImg.addClass('circle-img-active');
+
+    const circleParent =  $($event.target.closest('.circle'));
+    $('.circle').removeClass('circle-active');
+    $('.circle').addClass('circle-inactive');
+    circleParent.addClass('circle-active');
+
+    $('.circle-icon').removeClass('circle-icon-active');
+    $('.circle-icon').addClass('circle-icon-inactive');
+    const icon = $($event.target.closest('.circle-icon'));
+    icon.removeClass('circle-icon-inactive');
+    icon.addClass('circle-icon-active');
+    
+    const id = circleParent.data('id');
+    $('.box').removeClass('box-active');
+    $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
+  
+    setTimeout(() => {
+      $('.box-' + id ).addClass('box-active');
+      $('.swiper .box').addClass('box-active box-' + id);
+    }, 100);
+
+    
+  }
+
+  function activateDescription(id) {
+    $('.description-box').addClass('description-box-inactive');
+    $('.description-box-body').removeClass('text-analytics text-data text-cloud');
+    $('.description-box').removeClass('description-box-active');
+    $('.description-box-'+ id).addClass('description-box-active');
+    $('.description-box-'+ id).removeClass('description-box-inactive');
+
+    $('.description-box-cloud .description-box-body').html(descriptionData[id].cloud);
+    $('.description-box-data .description-box-body').html(descriptionData[id].data);
+    $('.description-box-analytics .description-box-body').html(descriptionData[id].analytics);
+
+    $('.description-box .description-box-body').addClass('text-' + id);
+    $('.description-box-'+id+' .description-box-body').removeClass('text-' + id);
+  }
+
+  function deactivateByCircle() {
+    $('.circle-img').removeClass('circle-img-active');
+    $('.circle-img').removeClass('circle-img-inactive');
+    $('.circle').removeClass('circle-active');
+    $('.circle').removeClass('circle-inactive');
+    $('.circle-icon').removeClass('circle-icon-active');
+    $('.circle-icon').removeClass('circle-icon-inactive');
+    $('.circles-background').removeClass('circles-background-inactive');
+    $('.description-box').removeClass('description-box-active');
+    $('.description-box').removeClass('description-box-inactive');
+    $('.description-box-body').removeClass('text-analytics text-data text-cloud');
+    $('.description-box-analytics .description-box-body').html(descriptionData.analytics.analytics);
+    $('.description-box-cloud .description-box-body').html(descriptionData.cloud.cloud);
+    $('.description-box-data .description-box-body').html(descriptionData.data.data);
+
+    $('.box').removeClass('box-active');
+  }
+
   $(document).ready(function() {
+
+    $('.circle-icon').on('mouseover', ($event) => {
+      if(!activeCircles) {
+        activateByCircle($event);
+      }
+    });
+
+    $('.circle-icon').on('mouseleave', ($event) => {
+      console.log('mouseleave');
+      if(!activeCircles) {
+        deactivateByCircle();
+      }
+    });
   
     $('.circle-icon').on('click', ($event) => {
-      const circleImg =  $($event.target.closest('.circle')).find('.circle-img');
-      $('.circle-img').removeClass('circle-img-active');
-      $('.circle-img').addClass('circle-img-inactive');
-      $('.circles-background').addClass('circles-background-inactive');
-      circleImg.removeClass('circle-img-inactive');
-      circleImg.addClass('circle-img-active');
-
+      activeCircles = true;
+      activateByCircle($event);
       const circleParent =  $($event.target.closest('.circle'));
-      $('.circle').removeClass('circle-active');
-      $('.circle').addClass('circle-inactive');
-      circleParent.addClass('circle-active');
-
-      $('.circle-icon').removeClass('circle-icon-active');
-      $('.circle-icon').addClass('circle-icon-inactive');
-      const icon = $($event.target.closest('.circle-icon'));
-      icon.removeClass('circle-icon-inactive');
-      icon.addClass('circle-icon-active');
-      
       const id = circleParent.data('id');
-      $('.box').removeClass('box-active');
-      $('.swiper .box').removeClass('box-active box-analytics box-cloud box-data');
-      $('.description-box').addClass('description-box-inactive');
-      setTimeout(() => {
-        $('.box-' + id ).addClass('box-active');
-        $('.swiper .box').addClass('box-active box-' + id);
-      }, 100);
-
-      $('.description-box-body').removeClass('text-analytics text-data text-cloud');
-      $('.description-box').removeClass('description-box-active');
-      $('.description-box-'+ id).addClass('description-box-active');
-      $('.description-box-'+ id).removeClass('description-box-inactive');
-
-      $('.description-box-cloud .description-box-body').html(descriptionData[id].cloud);
-      $('.description-box-data .description-box-body').html(descriptionData[id].data);
-      $('.description-box-analytics .description-box-body').html(descriptionData[id].analytics);
-
-      $('.description-box .description-box-body').addClass('text-' + id);
-      $('.description-box-'+id+' .description-box-body').removeClass('text-' + id);
-
+      activateDescription(id);
       loadSwiperBoxContent(id);
 
       initSwiper();
@@ -278,6 +323,7 @@
     });
 
     $('.wrapper').on('click', ($event) => {
+      activeCircles = false;
       if ( swiper !== undefined ) swiper.destroy( true, true );
       $('.circle-img').removeClass('circle-img-active');
       $('.circle-img').removeClass('circle-img-inactive');
