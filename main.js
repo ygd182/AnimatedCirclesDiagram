@@ -305,5 +305,11 @@
     $('.box').on('click', ($event) => { 
       $event.stopPropagation();
     });
+
+    $( window ).resize(function() {
+      if (window.innerWidth > 800) {
+        $('.swiper').hide();
+      }
+    });
   });
 })();
