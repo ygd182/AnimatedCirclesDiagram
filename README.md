@@ -1,4 +1,4 @@
-# diagram
+# AnimatedCirclesDiagram
 
 First version of animated circles diagram with data made for https://proskale.com/
 
